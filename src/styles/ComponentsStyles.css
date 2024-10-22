@@ -1,0 +1,70 @@
+/* Global styles for components */
+.search-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;  /* Align items to the left */
+}
+
+/* General styles for each component */
+.component-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;  /* Align items to the left */
+    padding: 20px;
+    margin: 10px 0;
+    background-color: #0027fe;
+    border-radius: 20px;  /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Align fields in a row inside each component */
+.component-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Field label */
+.component-row label {
+    font-weight: bold;
+    width: 100px;  /* Set a fixed width for labels for better alignment */
+    margin-right: 10px;
+    text-align: right;
+}
+
+/* Input field or display field */
+.component-row input,
+.component-row p {
+    flex-grow: 1;
+    margin: 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;  /* Rounded corners */
+}
+
+/* Button styles */
+.component-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;  /* Rounded corners */
+    cursor: pointer;
+}
+
+.component-button:hover {
+    background-color: #0056b3;
+}
+
+/* Delete button */
+.delete-btn {
+    background-color: #ff4d4d;
+    border-radius: 5px;  /* Rounded corners */
+}
+
+.delete-btn:hover {
+    background-color: #cc0000;
+}

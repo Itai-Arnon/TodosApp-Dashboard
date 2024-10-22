@@ -1,0 +1,33 @@
+Childcomponent
+
+states
+    user object
+
+     user object {id: int , name: str , email: str ,title:str , completed: bool }
+
+function -> father sends update and delete to child
+    delete user (callback-father)
+
+    update user (callback-father)
+
+    ** Ever change to  user: useEffect invokes callback function to father inorder to update users Arr
+
+
+html
+    update and delete buttons
+    textboxes with
+    name   onChange e-> setUSer [... name]
+    email onChange e-> setUSer [... email]
+
+    id - pressed to
+     1. open another side
+     2. change style in div to red
+
+     another side or component:
+      1. todos: title  e -> setUSer [... title]
+      2.      boolean is completed
+      3. button is completed e-> setUSer [... is completed]
+
+
+
+

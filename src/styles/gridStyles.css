@@ -1,0 +1,44 @@
+/* gridStyles.css */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* Two columns */
+    grid-template-rows: 1fr 1fr;     /* Two rows */
+    grid-template-areas:
+    "user-info todo-list"
+    "user-address post";  /* Define which areas go where */
+    gap: 20px;              /* Space between grid items */
+    padding: 20px;
+    width: 100%;            /* Make grid take full width */
+    height: 100%;           /* Optional: Make grid take full height */
+}
+
+/* Add this CSS to enable scrolling */
+.scrollable-container {
+    max-height: 400px; /* Adjust the height as needed */
+    overflow-y: auto;
+}
+
+
+.grid-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+    grid-area: user-info;   /* Upper left: User info */
+}
+
+.todo-list {
+    grid-area: todo-list;   /* Upper right: Todos */
+}
+
+.user-address {
+    grid-area: user-address; /* Lower left: Address */
+}
+
+.post {
+    grid-area: post;        /* Lower right: Post */
+}
