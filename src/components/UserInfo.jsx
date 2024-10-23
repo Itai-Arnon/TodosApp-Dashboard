@@ -1,8 +1,9 @@
 // UserInfo.js
-import React from 'react';
+
 import '../styles/ComponentsStyles.css';
 import {useState} from 'react';
-function UserInfo({ userId, name, email, updateUser, deleteUser ,  handleHover}) {
+// eslint-disable-next-line react/prop-types
+function UserInfo({ userId, name, email, updateUser, deleteUser ,  handleMouseOver, handleMouseLeave}) {
 
     const originalColor = "rgb( 0, 39, 254)";
 
@@ -46,7 +47,7 @@ function UserInfo({ userId, name, email, updateUser, deleteUser ,  handleHover})
 
             <button onClick={handleUpdate} className="component-button">Update User</button>
             <button onClick={deleteUser} className="component-button delete-btn">Delete User</button>
-            <button onMouseOver={() => handleHover()} className="component-button moreinfo-btn"><h3>Other Data</h3></button>
+            <button onMouseEnter={()=>handleMouseOver({userId})} onMouseLeave={handleMouseLeave} className="component-button moreinfo-btn"><h3>Other Data</h3></button>
 
         </div>
     );

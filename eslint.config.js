@@ -23,7 +23,8 @@ export default [
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
-    rules: {
+      rules: {
+        "react/prop-types": 0,
       ...js.configs.recommended.rules,
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,

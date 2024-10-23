@@ -5,16 +5,13 @@ import UserAddress from './components/UserAddress.jsx';
 import TodoList from './components/TodoList.jsx';
 import Post from './components/Post.jsx';
 import './styles/gridStyles.css';  // Import the CSS styles for the grid layout
-import {useState} from 'react';
 
-function GridComponent({users, todos, posts, updateUser, updateTodo, updatePost, deleteUser}) {
 
-    const [hover, isHover] = useState(false);
+// eslint-disable-next-line react/prop-types
+function GridComponent({users, todos, posts, updateUser, updateTodo, updatePost, deleteUser , handleMouseOver ,  handleMouseLeave , hover}) {
 
-    const handleHover = () => {
-        isHover(!hover);
-        console.log(hover);
-    }
+
+
 
     return (
 
@@ -30,8 +27,8 @@ function GridComponent({users, todos, posts, updateUser, updateTodo, updatePost,
                         email={user.email}
                         updateUser={(updatedUser) => updateUser(index, updatedUser)}
                         deleteUser={() => deleteUser(index)}
-                        handleHover={handleHover}
-
+                        handleMouseOver={ handleMouseOver}
+                        handleMouseLeave={handleMouseLeave}
                     />
                 </div>
             ))}
@@ -39,6 +36,7 @@ function GridComponent({users, todos, posts, updateUser, updateTodo, updatePost,
             {/* Repeat UserAddress */}
             {/* eslint-disable-next-line react/prop-types */}
 
+            {/* eslint-disable-next-line react/prop-types */}
             { users.map((user, index) => (
                 hover &&  ( <div key={`address-${user.id}`} className="grid-item user-address">
                       <UserAddress
