@@ -31,6 +31,7 @@ function GridComponent({users, todos, posts, updateUser, updateTodo, updatePost,
                         updateUser={(updatedUser) => updateUser(index, updatedUser)}
                         deleteUser={() => deleteUser(index)}
                         handleHover={handleHover}
+
                     />
                 </div>
             ))}

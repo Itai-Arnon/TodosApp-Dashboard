@@ -22,6 +22,11 @@ function TodoMain() {
     const [message, setMessage] = useState("");
     const [showMessage, setShowMessage] = useState(false);
 
+    if(!searchTerm)
+        console.log("searchTerm Error");
+    else
+        console.log("searchTerm:", searchTerm);
+
     useEffect(() => {
 
         // Fetch users, posts, and todos on component mount
@@ -35,8 +40,6 @@ function TodoMain() {
                 setTodos(todosData.res);
             } else {
                 _message("Failed to fetch data");
-
-
             }
         }
         fetchData();
@@ -48,6 +51,8 @@ function TodoMain() {
             user.name.toLowerCase().includes(searchTerm.toLowerCase())
         );
         setFilteredUsers(results);
+        console.log("Filtered Users", results);
+
     }, [searchTerm, users]);
 // display various status of app messages
     const _message = (msg) =>{
@@ -88,7 +93,7 @@ function TodoMain() {
             <h1>Todo Dashboard</h1>
             {showMessage && <div> <h3 className="message">{message}</h3></div>}
             {/* SearchComponent for filtering users setSearch term is the function address passed*/}
-            <SearchComponent onSearch={setSearchTerm} />
+            <SearchComponent onSearch={()=> setSearchTerm(searchTerm)} />
             {/* Pass arrays and handlers to GridComponent */}
             <GridComponent
                 users={filteredUsers}
