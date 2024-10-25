@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
-import GridComponent from './GridComponent';
+import GridComponent from './GridComponent.jsx';
 import {getAllUsers, getAllPosts, getAllTodos} from './utils/utils.js';
-import SearchComponent from './components/SearchComponent';
+import SearchComponent from './components/SearchComponent.jsx';
 
 
 function TodoMain() {
@@ -30,21 +30,22 @@ function TodoMain() {
     else
         console.log("searchTerm:", searchTerm);
 
-    useEffect(() => {
-
-        // Fetch users, posts, and todos on component mount
-        const fetchData = async () => {
-            const usersData = await getAllUsers();
-            const postsData = await getAllPosts();
-            const todosData = await getAllTodos();
-            if (usersData.outcome === true && postsData.outcome === true && todosData.outcome === true) {
-                setUsers(usersData.res);
-                setPosts(postsData.res);
-                setTodos(todosData.res);
-            } else {
-                _message("Failed to fetch data");
-            }
+    // Fetch data from API made global in order to be used in other functions
+    const fetchData = async () => {
+        const usersData = await getAllUsers();
+        const postsData = await getAllPosts();
+        const todosData = await getAllTodos();
+        if (usersData.outcome === true && postsData.outcome === true && todosData.outcome === true) {
+            setUsers(usersData.res);
+            setPosts(postsData.res);
+            setTodos(todosData.res);
+        } else {
+            _message("Error Fetching Data");
         }
+    };
+
+    useEffect(() => {
+        // Fetch users, posts, and todos on component mount
         fetchData();
 
     }, []);
@@ -58,12 +59,27 @@ function TodoMain() {
 
     }, [searchTerm, users]);
 
+    const handleMouse = (userId) => {
+        setHover(!hover);
+        console.log("Hover:", hover);
+        setSelectedIndex(userId);
+
+    }
+    // useEffect to display user data when hovering over user by filtering the resource arrays
     useEffect(() => {
+        if (hover == true) {
         setUsers(users.find(user => user.id === selectedIndex))
         setTodos(todos.find(todo => todo.userId === selectedIndex));
         setPosts(posts.find(post => post.userId === selectedIndex));
+            _message("Displaying User Number:", selectedIndex);
+            console.log("users", users);
+            console.log("todos", todos);
+            console.log("posts", posts);
+    } else
+          fetchData();
+          setShowMessage(false);
 
-    },[selectedIndex  ]);
+    },[selectedIndex, hover]);
 
 // display various status of app messages
     const _message = (msg) => {
@@ -98,10 +114,7 @@ function TodoMain() {
         const newUsers = users.filter((_, i) => i !== index);
         setUsers(newUsers);
     };
-    const handleMouse = (userId) => {
-        setHover(!hover);
-        setSelectedIndex(userId);
-    }
+
 
     return (
         <div className="dashboard">

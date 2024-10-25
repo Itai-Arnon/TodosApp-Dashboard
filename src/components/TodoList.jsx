@@ -1,7 +1,6 @@
 // TodoList.js
-import React from 'react';
 import '../styles/ComponentsStyles.css';
-
+// eslint-disable-next-line react/prop-types
 function TodoList({ todoName, isDone, updateTodo }) {
     const handleUpdate = () => {
         const updatedTodo = prompt('Enter new todo name:', todoName);

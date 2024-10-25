@@ -10,12 +10,9 @@ import './styles/gridStyles.css';  // Import the CSS styles for the grid layout
 // eslint-disable-next-line react/prop-types
 function GridComponent({users, todos, posts, updateUser, updateTodo, updatePost, deleteUser , handleMouseOver ,  handleMouseLeave , hover}) {
 
-
-
-
     return (
 
-        // <>hello</>
+
         <div className="grid-container">
             {/* Repeat UserInfo */}
             {/* eslint-disable-next-line react/prop-types */}
@@ -27,7 +24,7 @@ function GridComponent({users, todos, posts, updateUser, updateTodo, updatePost,
                         email={user.email}
                         updateUser={(updatedUser) => updateUser(index, updatedUser)}
                         deleteUser={() => deleteUser(index)}
-                        handleMouseOver={ handleMouseOver}
+                        handleMouseOver={handleMouseOver}
                         handleMouseLeave={handleMouseLeave}
                     />
                 </div>
@@ -73,6 +70,7 @@ function GridComponent({users, todos, posts, updateUser, updateTodo, updatePost,
             ))}
         </div>
     );
+
 }
 
 export default GridComponent;

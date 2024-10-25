@@ -1,6 +1,7 @@
 // Post.js
-import React from 'react';
+
 import '../styles/ComponentsStyles.css';
+// eslint-disable-next-line react/prop-types
 function Post({ title, body, updatePost }) {
     const handleUpdate = () => {
         const updatedTitle = prompt('Enter new post title:', title);

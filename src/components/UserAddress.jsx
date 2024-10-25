@@ -1,7 +1,6 @@
 // UserAddress.js
-import React from 'react';
 import '../styles/ComponentsStyles.css';
-
+// eslint-disable-next-line react/prop-types
 function UserAddress({ street, city, zipcode, updateUser }) {
     const handleUpdate = () => {
         const updatedStreet = prompt('Enter new street:', street);
