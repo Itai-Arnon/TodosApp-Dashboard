@@ -6,6 +6,8 @@ import SearchComponent from './components/SearchComponent.jsx';
 
 function TodoMain() {
 
+    const setAllUsers = null;
+
     // Users Array
     const [users, setUsers] = useState([]);
     //  Todos Array
@@ -23,7 +25,7 @@ function TodoMain() {
 
     const [selectedIndex, setSelectedIndex] = useState(null);
 
-    const [hover, setHover] = useState(false);
+
 
     if (!searchTerm)
         console.log("searchTerm Error");
@@ -48,7 +50,7 @@ function TodoMain() {
         // Fetch users, posts, and todos on component mount
         fetchData();
 
-    }, []);
+    });
 
     useEffect(() => {
         const results = users.filter((user) =>
@@ -59,27 +61,30 @@ function TodoMain() {
 
     }, [searchTerm, users]);
 
-    const handleMouse = (userId) => {
-        setHover(!hover);
-        console.log("Hover:", hover);
+    const handleMouseOver = (userId) => {
+        console.log("UserId:", userId);
         setSelectedIndex(userId);
-
     }
-    // useEffect to display user data when hovering over user by filtering the resource arrays
-    useEffect(() => {
-        if (hover == true) {
-        setUsers(users.find(user => user.id === selectedIndex))
-        setTodos(todos.find(todo => todo.userId === selectedIndex));
-        setPosts(posts.find(post => post.userId === selectedIndex));
-            _message("Displaying User Number:", selectedIndex);
-            console.log("users", users);
-            console.log("todos", todos);
-            console.log("posts", posts);
-    } else
-          fetchData();
-          setShowMessage(false);
 
-    },[selectedIndex, hover]);
+    const handleMouseLeave = () => {
+        setSelectedIndex(setAllUsers);
+    }
+   // // useEffect to display user data when hovering over user by filtering the resource arrays
+   //   useEffect(() => {
+   //      if (selectedIndex !== setAllUsers) {
+   //          setUsers(users.find(user => user.id === selectedIndex))
+   //          setTodos(todos.find(todo => todo.userId === selectedIndex));
+   //          setPosts(posts.find(post => post.userId === selectedIndex));
+   //          _message("Displaying User Number:", selectedIndex);
+   //          console.log("users", users);
+   //          console.log("todos", todos);
+   //          console.log("posts", posts);
+   //      }else{
+   //          _message("Displaying All Users");
+   //          fetchData();
+   //      }
+   //
+   //  }, [selectedIndex]  );
 
 // display various status of app messages
     const _message = (msg) => {
@@ -131,9 +136,9 @@ function TodoMain() {
                 updateTodo={updateTodo}
                 updatePost={updatePost}
                 deleteUser={deleteUser}
-                handleMouseOver={handleMouse}
-                handleMouseLeave={handleMouse}
-                hover = {hover}
+                handleMouseOver={handleMouseOver}
+                handleMouseLeave={handleMouseLeave}
+                selectedIndex={selectedIndex}
             />
         </div>
     );

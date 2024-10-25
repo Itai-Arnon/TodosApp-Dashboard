@@ -8,13 +8,24 @@ import './styles/gridStyles.css';  // Import the CSS styles for the grid layout
 
 
 // eslint-disable-next-line react/prop-types
-function GridComponent({users, todos, posts, updateUser, updateTodo, updatePost, deleteUser , handleMouseOver ,  handleMouseLeave , hover}) {
+function GridComponent({
+                           users,
+                           todos,
+                           posts,
+                           updateUser,
+                           deleteUser,
+                           handleMouseOver,
+                           handleMouseLeave,
+                           updateTodo,
+                           updatePost,
+                           selectedIndex
+
+                       }) {
+    //  todos,posts,        updateTodo,   updatePost,
+    // {    selectedIndex && ( <h1>Selected Index: {selectedIndex}</h1>  )     }
 
     return (
-
-
         <div className="grid-container">
-            {/* Repeat UserInfo */}
             {/* eslint-disable-next-line react/prop-types */}
             {users.map((user, index) => (
                 <div key={`user-${user.id}`} className="grid-item user-info">
@@ -26,51 +37,73 @@ function GridComponent({users, todos, posts, updateUser, updateTodo, updatePost,
                         deleteUser={() => deleteUser(index)}
                         handleMouseOver={handleMouseOver}
                         handleMouseLeave={handleMouseLeave}
+                        selectedIndex={selectedIndex}
                     />
                 </div>
-            ))}
+            ))
+            }
 
-            {/* Repeat UserAddress */}
-            {/* eslint-disable-next-line react/prop-types */}
+            )
 
-            {/* eslint-disable-next-line react/prop-types */}
-            { users.map((user, index) => (
-                hover &&  ( <div key={`address-${user.id}`} className="grid-item user-address">
-                      <UserAddress
-                        street={user.address.street}
-                        city={user.address.city}
-                        zipcode={user.address.zipcode}
-                        updateUser={(updatedUser) => updateUser(index, updatedUser)}
-                    />
-                </div>)
-            ))}
+            {selectedIndex &&
+                (users
+                    .filter(user => user.id === selectedIndex)
+                    .map((user, index) => (
+                        <div key={`address-${user.id}`} className="grid-item user-address">
+                            <UserAddress
+                                street={user.address.street}
+                                city={user.address.city}
+                                zipcode={user.address.zipcode}
+                                updateUser={(updatedUser) => updateUser(index, updatedUser)}
+                            />
+                        </div>
+                    )))}
+            {selectedIndex &&
+                (users
 
-            {/* Repeat TodoList */}
-            {/* eslint-disable-next-line react/prop-types */}
-            {todos.map((todo, index) => (
-                hover && (<div key={`todo-${index}`} className="grid-item todo-list">
-                    <TodoList
-                        todoName={todo.title}
-                        isDone={todo.isDone}
-                        updateTodo={(updatedTodo) => updateTodo(index, updatedTodo)}
-                    />
-                </div>)
-            ))}
+                    .filter(user => user.id === selectedIndex)
+                    .map((user, index) => (
+                        <div key={`address-${user.id}`} className="grid-item user-address">
 
-            {/* Repeat Post */}
-            {/* eslint-disable-next-line react/prop-types */}
-            {posts.map((post, index) => (
-                hover && (<div key={`post-${index}`} className="grid-item post">
-                    <Post
-                        title={post.title}
-                        body={post.body}
-                        updatePost={(updatedPost) => updatePost(index, updatedPost)}
-                    />
-                </div>)
-            ))}
+                            <UserAddress
+                                street={user.address.street}
+                                city={user.address.city}
+                                zipcode={user.address.zipcode}
+                                updateUser={(updatedUser) => updateUser(index, updatedUser)}
+                            />
+                        </div>
+                    )))}
+
+
+            {selectedIndex &&
+                todos
+                    .filter(user => user.id === selectedIndex)
+                    .map((todo, index) => (
+                        <div key={`todo-${index}`} className="grid-item todo-list">
+                            <TodoList
+                                todoName={todo.title}
+                                isDone={todo.isDone}
+                                updateTodo={(updatedTodo) => updateTodo(index, updatedTodo)}
+                            />
+                        </div>
+                    ))}
+
+            {selectedIndex &&
+                posts
+                    .filter(user => user.id === selectedIndex)
+                    .map((post, index) => (
+                        <div key={`todo-${index}`} className="grid-item todo-list">
+                            <Post
+                                todoName={post.title}
+                                isDone={post.body}
+                                updatePost={(updatedPost) => updatePost(index, updatedPost)}
+                            />
+                        </div>
+                    ))}
+
         </div>
     );
-
 }
+
 
 export default GridComponent;

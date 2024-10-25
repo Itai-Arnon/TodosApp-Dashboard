@@ -47,7 +47,7 @@ function UserInfo({ userId, name, email, updateUser, deleteUser ,  handleMouseOv
 
             <button onClick={handleUpdate} className="component-button">Update User</button>
             <button onClick={deleteUser} className="component-button delete-btn">Delete User</button>
-            <button onMouseEnter={()=>handleMouseOver({userId})} onMouseLeave={handleMouseLeave} className="component-button moreinfo-btn"><h3>Other Data</h3></button>
+            <button onMouseEnter={()=>handleMouseOver(userId)} onMouseLeave={handleMouseLeave} className="component-button moreinfo-btn"><h3>Other Data</h3></button>
 
         </div>
     );
