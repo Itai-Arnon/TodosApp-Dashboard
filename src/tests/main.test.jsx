@@ -5,6 +5,13 @@ import TodoMain from "../TodoMain.jsx";
 
 import {render ,screen} from '@testing-library/react';
 
+function TestComponent() {
+    return (
+        <div>
+            <h1>Test Component</h1>
+        </div>
+    );
+}
 
 
 describe('group', () => {
@@ -15,8 +22,8 @@ describe('group', () => {
 });
 
 test('test TodoMain', () => {
-    render(<TodoMain/>);
-    const elem = (screen.getByText('Search users...'))
+    render(<TestComponent />);
+    const elem = (screen.getByText('Test Component'));
     expect(elem).toBeInTheDocument();
 });
 

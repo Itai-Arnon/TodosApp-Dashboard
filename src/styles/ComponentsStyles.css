@@ -22,7 +22,8 @@
 .component-row {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
+    text-align: left;
     margin-bottom: 10px;
 }
 
@@ -31,7 +32,7 @@
     font-weight: bold;
     width: 100px;  /* Set a fixed width for labels for better alignment */
     margin-right: 10px;
-    text-align: right;
+    text-align: left;
 }
 
 /* Input field or display field */

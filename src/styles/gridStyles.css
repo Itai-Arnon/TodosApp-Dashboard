@@ -6,8 +6,8 @@
     grid-template-areas:
     "user-info todo-list"
     "user-address post";  /* Define which areas go where */
-    gap: 20px;              /* Space between grid items */
-    padding: 20px;
+    gap: 1rem;              /* Space between grid items */
+    padding: 1px;
     width: 100%;            /* Make grid take full width */
     height: 100%;           /* Optional: Make grid take full height */
 }
@@ -23,8 +23,9 @@
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 15px;
+    padding: 0.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 75%;
 }
 
 .user-info {

@@ -10,14 +10,15 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test_2": "test --watchAll --coverage",
-    "eject": "eject"
+    "test_2": "react-scripts test --watchAll --coverage",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "axios": "^1.7.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "@babel/plugin-proposal-private-property-in-object": "^@7.21.11:"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",

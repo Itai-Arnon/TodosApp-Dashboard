@@ -35,12 +35,12 @@ function UserInfo({ userId, name, email, updateUser, deleteUser ,  handleMouseOv
                 <p >{userId}</p>
             </div>
 
-            <div className="component-row">
+            <div className="component-row" >
                 <label>Name:</label>
                 <p>{name}</p>
             </div>
 
-            <div className="component-row">
+            <div className="component-row" >
                 <label>Email:</label>
                 <p>{email}</p>
             </div>
